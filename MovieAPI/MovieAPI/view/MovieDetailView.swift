@@ -44,17 +44,17 @@ struct MovieDetailView: View
                         .font(.headline)
                     Text(movie.genere)
                         .font(.footnote)
-                    Text(movie.breedExplaination)
-                    if movie.isHairless {
+                    Text(movie.story)
+                    if movie.isBoxOffice {
                         Text("hairless")
                     }
                     
                     HStack {
-                        Text("Energy level")
+                        Text("IMDB Rating")
                         Spacer()
                         ForEach(1..<6) { id in
                             Image(systemName: "star.fill")
-                                .foregroundColor(movie.energyLevel > id ? Color.accentColor : Color.gray )
+                                .foregroundColor(movie.rating > id ? Color.accentColor : Color.gray )
                         }
                     }
                     
