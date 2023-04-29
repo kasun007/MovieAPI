@@ -10,7 +10,7 @@ import Foundation
 struct Movie: Codable,CustomStringConvertible,Identifiable{
     let id: String
     let name: String
-    let temperament: String
+    let genere: String
     let breedExplaination: String
     let energyLevel: Int
     let isHairless: Bool
@@ -23,7 +23,7 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case temperament
+        case genere
         case breedExplaination = "description"
         case energyLevel = "energy_level"
         case isHairless = "hairless"
@@ -34,8 +34,8 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try values.decode(String.self, forKey: .id)
-       name = try values.decode(String.self, forKey: .name)
-        temperament = try values.decode(String.self, forKey: .temperament)
+        name = try values.decode(String.self, forKey: .name)
+        genere = try values.decode(String.self, forKey: .genere)
         breedExplaination = try values.decode(String.self, forKey: .breedExplaination)
         energyLevel = try values.decode(Int.self, forKey: .energyLevel)
         
@@ -45,13 +45,13 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
         image = try values.decodeIfPresent(MovieImage.self, forKey: .image)
     }
     
-    init(name: String, id: String, explaination: String, temperament: String,
+    init(name: String, id: String, explaination: String, genere: String,
          energyLevel: Int, isHairless: Bool, image: MovieImage?){
         self.name = name
         self.id = id
         self.breedExplaination = explaination
         self.energyLevel = energyLevel
-        self.temperament = temperament
+        self.genere = genere
         self.image = image
         self.isHairless = isHairless
     }

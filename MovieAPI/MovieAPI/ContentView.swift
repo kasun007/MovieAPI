@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    @StateObject var movieFetcher = MovieFetcher()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+      
+        if movieFetcher.isLoading {
+            LoadingView()
+        }else if movieFetcher.errorMessage != nil  {
+            ErrorView(movieFetcher: movieFetcher)
+        }else {
+            MovieListView(movies: movieFetcher.movies)
         }
-        .padding()
+      
+          
     }
 }
 

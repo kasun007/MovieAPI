@@ -10,7 +10,7 @@ import Foundation
 
 protocol APIServiceProtocol{
     
-    func fetchMovies(url:URL?,completion:@escaping(Result<[Movie],APIE>)->Void  )
+    func fetchMovies(url:URL?,completion:@escaping(Result<[Movie],APIError>)->Void  )
     
     
 }
