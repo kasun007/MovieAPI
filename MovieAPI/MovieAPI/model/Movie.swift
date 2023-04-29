@@ -8,6 +8,7 @@
 import Foundation
 
 struct Movie: Codable,CustomStringConvertible,Identifiable{
+    // Properties of the Movie struct.
     let id: String
     let name: String
     let genere: String
@@ -15,11 +16,13 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
     let rating: Int
     let isBoxOffice: Bool
     let image: MovieImage?
-    
+
+    // Computed property for the description of a movie.
     var description: String {
         return "Movie Name: \(name) and id \(id), genere: \(genere) Box Ofiice: \(isBoxOffice ? "YES" : "NO")"
     }
-    
+
+    // CodingKeys enumeration is used to map the keys of the JSON response to the properties of the Movie struct.
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -29,7 +32,8 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
         case isBoxOffice = "isBoxOffice"
         case image
     }
-    
+
+    // Initializer for the Movie struct that initializes it from the values of the decoder.
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -44,9 +48,9 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
         
         image = try values.decodeIfPresent(MovieImage.self, forKey: .image)
     }
-    
-    init(name: String, id: String, story: String, genere: String,
-         rating: Int, isBoxOffice: Bool, image: MovieImage?){
+
+    // Initializer for the Movie struct that takes the properties of a movie as parameters.
+    init(name: String, id: String, story: String, genere: String, rating: Int, isBoxOffice: Bool, image: MovieImage?){
         self.name = name
         self.id = id
         self.story = story
@@ -55,7 +59,7 @@ struct Movie: Codable,CustomStringConvertible,Identifiable{
         self.image = image
         self.isBoxOffice = isBoxOffice
     }
-    
+
  
      
 }

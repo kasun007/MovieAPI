@@ -18,7 +18,7 @@ struct ErrorView: View {
             Text(movieFetcher.errorMessage ?? "")
             
             Button {
-                movieFetcher.fetchAllBreeds()
+                movieFetcher.fetchAllMovies()
             } label: {
                 Text("Try again")
             }
